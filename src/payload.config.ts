@@ -16,9 +16,9 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
-    components: {
-      afterLogin: [GoogleLoginButton],
-    },
+    // components: {
+    //   afterLogin: [GoogleLoginButton],
+    // },
   },
   cors: "*",
   editor: slateEditor({}),
