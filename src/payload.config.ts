@@ -10,11 +10,15 @@ import Users from "./collections/Users";
 import Media from "./collections/Media";
 import Orders from "./collections/Orders";
 import Products from "./collections/Products";
+import GoogleLoginButton from "./components/GoogleLoginButton";
 
 export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
+    components: {
+      afterLogin: [GoogleLoginButton],
+    },
   },
   cors: "*",
   editor: slateEditor({}),
