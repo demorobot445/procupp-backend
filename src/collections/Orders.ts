@@ -1,3 +1,4 @@
+import update from "payload/dist/collections/operations/update";
 import { CollectionConfig } from "payload/types";
 
 const Orders: CollectionConfig = {
@@ -48,9 +49,19 @@ const Orders: CollectionConfig = {
       type: "array",
       fields: [
         {
-          name: "product",
-          type: "relationship",
-          relationTo: "products",
+          name: "productImage",
+          type: "upload",
+          relationTo: "media",
+        },
+        {
+          name: "name",
+          type: "text",
+          required: true,
+        },
+        {
+          name: "price",
+          type: "number",
+          required: true,
         },
         {
           name: "quantity",
