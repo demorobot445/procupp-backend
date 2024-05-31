@@ -89,6 +89,17 @@ const Orders: CollectionConfig = {
         position: "sidebar",
       },
     },
+    {
+      name: "deliveryDate",
+      type: "date",
+      admin: {
+        position: "sidebar",
+        date: {
+          pickerAppearance: "dayOnly",
+          displayFormat: "d MMM yyy",
+        },
+      },
+    },
   ],
 };
 
