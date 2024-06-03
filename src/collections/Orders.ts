@@ -100,6 +100,28 @@ const Orders: CollectionConfig = {
         },
       },
     },
+    {
+      name: "shippedDate",
+      type: "date",
+      admin: {
+        position: "sidebar",
+        date: {
+          pickerAppearance: "dayOnly",
+          displayFormat: "d MMM yyy",
+        },
+      },
+    },
+    {
+      name: "outOfDeliveryDate",
+      type: "date",
+      admin: {
+        position: "sidebar",
+        date: {
+          pickerAppearance: "dayOnly",
+          displayFormat: "d MMM yyy",
+        },
+      },
+    },
   ],
 };
 
