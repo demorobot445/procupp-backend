@@ -54,6 +54,11 @@ const Orders: CollectionConfig = {
           relationTo: "media",
         },
         {
+          name: "sourceImage",
+          type: "upload",
+          relationTo: "media",
+        },
+        {
           name: "name",
           type: "text",
           required: true,
@@ -66,6 +71,13 @@ const Orders: CollectionConfig = {
         {
           name: "quantity",
           type: "number",
+        },
+        {
+          name: "printOnBothSide",
+          type: "checkbox",
+          admin: {
+            readOnly: true,
+          },
         },
       ],
     },
