@@ -1,4 +1,3 @@
-import update from "payload/dist/collections/operations/update";
 import { CollectionConfig } from "payload/types";
 
 const Orders: CollectionConfig = {
@@ -8,6 +7,32 @@ const Orders: CollectionConfig = {
     update: () => true,
     create: () => true,
     delete: () => true,
+  },
+  hooks: {
+    afterChange: [
+      async ({ doc, operation, req }) => {
+        if (operation === "create") {
+          let user = await req.payload.findByID({
+            collection: "users",
+            id: doc.orderBy,
+          });
+          await req.payload.sendEmail({
+            to: user.email,
+            from: process.env.SMTP_USER,
+            subject: "Order Confirmation",
+            html: `<h1>Thank you for your order!</h1>
+              <p>Here is your order summary:</p>
+              <ul>
+                ${doc.cart.map(
+                  (item) => `<li>${item.name} - ${item.price}</li>`
+                )}
+              </ul>
+              <p>Total: ${doc.total}</p>
+            `,
+          });
+        }
+      },
+    ],
   },
   fields: [
     {

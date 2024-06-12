@@ -10,6 +10,7 @@ import Users from "./collections/Users";
 import Media from "./collections/Media";
 import Orders from "./collections/Orders";
 import GoogleLoginButton from "./components/GoogleLoginButton";
+import Messages from "./collections/Messages";
 
 export default buildConfig({
   admin: {
@@ -21,7 +22,7 @@ export default buildConfig({
   },
   cors: "*",
   editor: slateEditor({}),
-  collections: [Users, Media, Orders],
+  collections: [Users, Media, Orders, Messages],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },

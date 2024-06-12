@@ -55,7 +55,7 @@ const Users: CollectionConfig = {
       name: "sub",
       label: "sub",
       type: "text",
-      admin: { readOnly: true },
+      admin: { readOnly: true, hidden: true },
       access: { update: () => false },
     },
     {
