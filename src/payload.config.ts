@@ -9,16 +9,16 @@ import { buildConfig } from "payload/config";
 import Users from "./collections/Users";
 import Media from "./collections/Media";
 import Orders from "./collections/Orders";
-import GoogleLoginButton from "./components/GoogleLoginButton";
+// import GoogleLoginButton from "./components/GoogleLoginButton";
 import Messages from "./collections/Messages";
 
 export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
-    components: {
-      afterLogin: [GoogleLoginButton],
-    },
+    // components: {
+    //   afterLogin: [GoogleLoginButton],
+    // },
   },
   cors: "*",
   editor: slateEditor({}),

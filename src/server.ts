@@ -63,7 +63,7 @@ app.get(
     });
 
     // Redirect user to the admin dashboard after successful authentication
-    res.redirect("http://localhost:3000?token=" + token);
+    res.redirect(process.env.FRONTEND_URL + "?token=" + token);
   }
 );
 
