@@ -9,8 +9,9 @@ import { buildConfig } from "payload/config";
 import Users from "./collections/Users";
 import Media from "./collections/Media";
 import Orders from "./collections/Orders";
-// import GoogleLoginButton from "./components/GoogleLoginButton";
+import GoogleLoginButton from "./components/GoogleLoginButton";
 import Messages from "./collections/Messages";
+import GoogleUsers from "./collections/GoogleUsers";
 
 export default buildConfig({
   admin: {
@@ -22,7 +23,7 @@ export default buildConfig({
   },
   cors: "*",
   editor: slateEditor({}),
-  collections: [Users, Media, Orders, Messages],
+  collections: [Users, GoogleUsers, Media, Orders, Messages],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },

@@ -37,14 +37,14 @@ app.get(
   // Callback function executed after successful authentication
   function (req: any, res) {
     // Access configuration for the 'users' collection
-    const collectionConfig = payload.collections["users"].config;
+    const collectionConfig = payload.collections["googleUsers"].config;
 
     // Select the fields from the user object to include in the JWT
     let fieldsToSign = {
       name: req.user.username,
       email: req.user.email, // User's email
       id: req.user.id, // User's ID
-      collection: "users", // Collection to which the user belongs
+      collection: "googleUsers", // Collection to which the user belongs
     };
 
     // Sign the JWT with selected fields
@@ -109,7 +109,7 @@ passport.serializeUser((user, done) => {
 // This is used to retrieve the full user information based on the stored ID.
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await payload.findByID({ collection: "users", id });
+    const user = await payload.findByID({ collection: "googleUsers", id });
     done(null, user);
   } catch (error) {
     done(error);

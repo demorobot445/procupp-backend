@@ -13,8 +13,8 @@ const Orders: CollectionConfig = {
       async ({ doc, operation, req }) => {
         if (operation === "create") {
           let user = await req.payload.findByID({
-            collection: "users",
-            id: doc.orderBy,
+            collection: doc.orderBy.relationTo,
+            id: doc.orderBy.value,
           });
           await req.payload.sendEmail({
             to: user.email,
@@ -38,7 +38,7 @@ const Orders: CollectionConfig = {
     {
       name: "orderBy",
       type: "relationship",
-      relationTo: "users",
+      relationTo: ["users", "googleUsers"],
     },
     {
       name: "status",

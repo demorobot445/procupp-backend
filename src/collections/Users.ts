@@ -52,20 +52,6 @@ const Users: CollectionConfig = {
       relationTo: "media",
     },
     {
-      name: "sub",
-      label: "sub",
-      type: "text",
-      admin: { readOnly: true, hidden: true },
-      access: { update: () => false },
-    },
-    {
-      name: "pictureURL",
-      label: "pictureURL",
-      type: "text",
-      admin: { readOnly: true },
-      access: { update: () => false },
-    },
-    {
       name: "shippingAddress",
       type: "array",
       fields: [

@@ -31,7 +31,7 @@ const GoogleOAuthStrategy = new OAuth2Strategy(
       const email = userData.email;
       const sub = userData.sub;
       const pictureUrl = userData.picture;
-      const collectionSlug = "users";
+      const collectionSlug = "googleUsers";
 
       // Find or create user in the database
       let user = await findOrCreateUser(
