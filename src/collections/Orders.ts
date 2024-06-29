@@ -52,6 +52,8 @@ const Orders: CollectionConfig = {
         { label: "Shipped", value: "1" },
         { label: "Out of Delivery", value: "2" },
         { label: "Delivered", value: "3" },
+        { label: "Canceled", value: "4" },
+        { label: "Refund", value: "5" },
       ],
     },
     {

@@ -47,6 +47,32 @@ const GoogleUsers: CollectionConfig = {
           type: "text",
         },
         {
+          type: "row",
+          fields: [
+            {
+              name: "country",
+              type: "text",
+            },
+            {
+              name: "zipcode",
+              type: "text",
+            },
+          ],
+        },
+        {
+          type: "row",
+          fields: [
+            {
+              name: "city",
+              type: "text",
+            },
+            {
+              name: "state",
+              type: "text",
+            },
+          ],
+        },
+        {
           name: "phone",
           type: "text",
         },

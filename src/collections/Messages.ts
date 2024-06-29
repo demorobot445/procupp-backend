@@ -13,7 +13,7 @@ const Messages: CollectionConfig = {
       async ({ doc, operation, req }) => {
         if (operation === "create") {
           await req.payload.sendEmail({
-            to: "info@worldprint.co.il",
+            to: "info@worldprint.com",
             from: process.env.SMTP_USER,
             subject: "Customer Message",
             html: `
