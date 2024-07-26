@@ -12,6 +12,7 @@ import Orders from "./collections/Orders";
 import GoogleLoginButton from "./components/GoogleLoginButton";
 import Messages from "./collections/Messages";
 import GoogleUsers from "./collections/GoogleUsers";
+import { Languages } from "./collections/Languages";
 
 export default buildConfig({
   admin: {
@@ -23,7 +24,7 @@ export default buildConfig({
   },
   cors: "*",
   editor: slateEditor({}),
-  collections: [Users, GoogleUsers, Media, Orders, Messages],
+  collections: [Users, GoogleUsers, Media, Orders, Messages, Languages],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
