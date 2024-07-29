@@ -7,6 +7,7 @@ export const Languages: CollectionConfig = {
   },
   admin: {
     useAsTitle: "name",
+    defaultColumns: ["name", "locale"],
   },
   fields: [
     {
