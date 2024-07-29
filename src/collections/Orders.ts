@@ -10,7 +10,7 @@ const Orders: CollectionConfig = {
   },
   hooks: {
     afterChange: [
-      async ({ doc, operation, req }) => {
+      async ({ doc, operation, req, previousDoc }) => {
         if (operation === "create") {
           let user = await req.payload.findByID({
             collection: doc.orderBy.relationTo,
@@ -30,6 +30,32 @@ const Orders: CollectionConfig = {
               <p>Total: ${doc.total}</p>
             `,
           });
+        }
+        if (operation === "update" && doc.status !== 0) {
+          let user = await req.payload.findByID({
+            collection: doc.orderBy.relationTo,
+            id: doc.orderBy.value,
+          });
+          if (doc.status !== previousDoc.status) {
+            await req.payload.sendEmail({
+              to: user.email,
+              from: process.env.SMTP_USER,
+              subject: "Order Status Information",
+              html: `<h1>Your order status has been updated</h1>
+                   <p>Current order status:${
+                     doc.status === 1
+                       ? "Shipped"
+                       : doc.status === 2
+                       ? "Out of Delivery"
+                       : doc.status === 3
+                       ? "Delivered"
+                       : doc.status === 4
+                       ? "Canceled"
+                       : "Refund"
+                   }</p>
+                  `,
+            });
+          }
         }
       },
     ],
