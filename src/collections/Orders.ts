@@ -37,7 +37,6 @@ const Orders: CollectionConfig = {
             id: doc.orderBy.value,
           });
           if (doc.status !== previousDoc.status) {
-            console.log(doc.status);
             await req.payload.sendEmail({
               to: user.email,
               from: process.env.SMTP_USER,
