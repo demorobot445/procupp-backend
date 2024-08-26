@@ -8,6 +8,24 @@ const Orders: CollectionConfig = {
     create: () => true,
     delete: () => true,
   },
+  //here you can create your custom endpoint
+  //your url path look like this ("your-host-name.com/api/collection-slug/endpoints-path")
+  //example ("http://localhost:4000/api/orders/payment")
+  endpoints: [
+    //all this endpoints array is express js code so you can use anything from express js.
+    {
+      path: "/payment", //path could be anything
+      method: "post", //'get', 'head', 'post', 'put', 'delete', 'connect' or 'options' all from express js
+      handler: async (req, res, next) => {
+        if (req.body.status === "working") {
+          console.log(req.body); //here your cardDetail or anything data you send from frontend
+          res.status(200).send({ ...req.body });
+        } else {
+          res.status(400).send({ error: "something wrong" });
+        }
+      },
+    },
+  ],
   hooks: {
     afterChange: [
       async ({ doc, operation, req, previousDoc }) => {
