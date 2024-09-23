@@ -53,14 +53,14 @@ app.get(
     });
 
     // Set a cookie in the response with the JWT
-    res.cookie(`${payload.config.cookiePrefix}-token`, token, {
-      path: "/", // Cookie path
-      httpOnly: true, // HttpOnly flag for security
-      expires: getCookieExpiration(collectionConfig.auth.tokenExpiration), // Cookie expiration time
-      secure: collectionConfig.auth.cookies.secure, // Secure flag (for HTTPS)
-      sameSite: collectionConfig.auth.cookies.sameSite, // SameSite attribute
-      domain: collectionConfig.auth.cookies.domain || undefined, // Cookie domain
-    });
+    // res.cookie(`${payload.config.cookiePrefix}-token`, token, {
+    //   path: "/", // Cookie path
+    //   httpOnly: true, // HttpOnly flag for security
+    //   expires: getCookieExpiration(collectionConfig.auth.tokenExpiration), // Cookie expiration time
+    //   secure: collectionConfig.auth.cookies.secure, // Secure flag (for HTTPS)
+    //   sameSite: collectionConfig.auth.cookies.sameSite, // SameSite attribute
+    //   domain: collectionConfig.auth.cookies.domain || undefined, // Cookie domain
+    // });
 
     // Redirect user to the admin dashboard after successful authentication
     res.redirect(process.env.FRONTEND_URL + "?token=" + token);
